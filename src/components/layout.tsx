@@ -1,16 +1,18 @@
 import * as React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
 import Header from './header'
 import { container } from './layout.module.scss'
+import { useTheme } from '@skagami/gatsby-plugin-dark-mode'
 
 interface LayoutProps {
   children: React.ReactNode
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
+  const [theme, toggleTheme] = useTheme()
+  if (theme === null) return null
   return (
     <div>
-      <Header />
+      <Header useTheme={[theme, toggleTheme]} />
       <main className={container}>{children}</main>
     </div>
   )

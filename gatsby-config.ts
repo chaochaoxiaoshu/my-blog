@@ -16,6 +16,12 @@ const config: GatsbyConfig = {
     'gatsby-plugin-mdx',
     'gatsby-transformer-sharp',
     {
+      resolve: '@skagami/gatsby-plugin-dark-mode',
+      options: {
+        rootElement: 'document.documentElement',
+      },
+    },
+    {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {

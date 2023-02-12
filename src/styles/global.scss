@@ -45,7 +45,7 @@
   --line: var(--gray-200);
 }
 
-[data-theme='dark'] {
+:root.dark {
   --text-primary: white;
   --text-secondary: var(--gray-400);
   --text-tertiary: var(--gray-500);
