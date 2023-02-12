@@ -38,7 +38,7 @@ const ThemePicker: React.FC = () => {
 const Header: React.FC = () => {
   return (
     <header className={header}>
-      <Link to='/'>
+      <Link to='/blog'>
         <Logo />
       </Link>
       <Navigator />
