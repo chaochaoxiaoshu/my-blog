@@ -24,7 +24,7 @@ interface BlogPostPorps {
 const BlogPost: React.FC<BlogPostPorps> = ({ data, children }) => {
   const image = getImage(data.mdx.frontmatter.hero_image)!
   return (
-    <Layout pageTitle={data.mdx.frontmatter.title}>
+    <Layout>
       <p>{data.mdx.frontmatter.date}</p>
       <GatsbyImage image={image} alt={data.mdx.frontmatter.hero_image_alt} />
       {children}
@@ -57,6 +57,10 @@ interface HeadProps {
       frontmatter: {
         title: string
         date: string
+        hero_image: FileNode
+        hero_image_alt: string
+        hero_image_credit_link: string
+        hero_image_credit_text: string
       }
     }
   }

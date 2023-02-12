@@ -1,0 +1,13 @@
+$screen-base: 0;
+$screen-md: screen and
+  (
+    min-width: 768px,
+  );
+$screen-lg: screen and
+  (
+    min-width: 1024px,
+  );
+$screen-xl: screen and
+  (
+    min-width: 1280px,
+  );

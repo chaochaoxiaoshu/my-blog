@@ -1,0 +1,64 @@
+@font-face {
+  font-family: 'Lexend';
+  font-weight: 100 900;
+  font-style: normal;
+  src: url(/fonts/Lexend-VariableFont_wght.ttf);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Lexend', sans-serif;
+  letter-spacing: 0.05rem;
+}
+
+:root {
+  /* Color Set */
+  --gray-50: #fafafa;
+  --gray-100: #f4f4f5;
+  --gray-200: #e4e4e7;
+  --gray-300: #d4d4d8;
+  --gray-400: #a1a1aa;
+  --gray-500: #71717a;
+  --gray-600: #52525b;
+  --gray-700: #3f3f46;
+  --gray-800: #27272a;
+  --gray-900: #18181b;
+
+  --teal-50: #f0fdfa;
+  --teal-100: #ccfbf1;
+  --teal-200: #99f6e4;
+  --teal-300: #5eead4;
+  --teal-400: #2dd4bf;
+  --teal-500: #14b8a6;
+  --teal-600: #0d9488;
+  --teal-700: #0f766e;
+  --teal-800: #115e59;
+  --teal-900: #134e4a;
+
+  --text-primary: var(--gray-800);
+  --text-secondary: var(--gray-500);
+  --text-tertiary: var(--gray-400);
+  --bg-primary: white;
+  --bg-secondary: var(--gray-100);
+  --line: var(--gray-200);
+}
+
+[data-theme='dark'] {
+  --text-primary: white;
+  --text-secondary: var(--gray-400);
+  --text-tertiary: var(--gray-500);
+  --bg-primary: var(--gray-900);
+  --bg-secondary: var(--gray-800);
+  --line: var(--gray-600);
+}
+
+html {
+  background-color: var(--bg-primary);
+}
+
+a {
+  color: inherit; /* blue colors for links too */
+  text-decoration: inherit; /* no underline */
+}
