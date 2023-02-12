@@ -32,7 +32,7 @@ const PostItem: React.FC<PostItemProps> = (props) => {
   const image = getImage(imageSrc)!
   return (
     <>
-      <Link to={`/blog/${slug}`}>
+      <Link style={{ display: 'block' }} to={`/blog/${slug}`}>
         <article className={postMobile}>
           <small className={postDate}>{date}</small>
           <h2 className={postTitle}>{title}</h2>
