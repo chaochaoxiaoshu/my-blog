@@ -14,9 +14,7 @@ type UseThemePicker = () => [Theme, Dispatch<SetStateAction<Theme>>]
 export const useThemePicker: UseThemePicker = () => {
   const [mediaQuery, setMediaQuery] = useState<MediaQueryList>()
 
-  const [theme, setTheme] = useState<Theme>(
-    localStorage.theme ? localStorage.theme : 'system'
-  )
+  const [theme, setTheme] = useState<Theme>('system')
 
   const applyTheme = () => {
     if (theme === 'system') {
@@ -35,6 +33,7 @@ export const useThemePicker: UseThemePicker = () => {
   }
 
   useEffect(() => {
+    setTheme(localStorage.theme ? localStorage.theme : 'system')
     setMediaQuery(window.matchMedia('(prefers-color-scheme: dark)'))
     applyTheme()
     mediaQuery?.addEventListener('change', applyTheme)
