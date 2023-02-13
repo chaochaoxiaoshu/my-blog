@@ -122,7 +122,7 @@ export const query = graphql`
           }
         }
         id
-        excerpt
+        excerpt(pruneLength: 60)
       }
     }
   }
