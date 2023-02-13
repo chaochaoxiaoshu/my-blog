@@ -1,5 +1,5 @@
 ---
-title: 'My First Post'
+title: '一个博客的新生'
 date: '2021-07-23'
 slug: 'my-first-post'
 hero_image: './jasper-garratt-1Wtj-6QSdTI-unsplash.jpg'
@@ -8,10 +8,109 @@ hero_image_credit_text: 'Christopher Ayme'
 hero_image_credit_link: 'https://unsplash.com/photos/ocZ-_Y7-Ptg'
 ---
 
-This is my first blog post! Isn't it _great_?
+# 迭代器与生成器
 
-Some of my **favorite** things are:
+我们将在这个**教程开发一个**简单的 V2EX 论坛客户端，你将在本节教程学到 Taro 的基础知识、概念和部分优化技巧。学习这些知识并不需要事先了解 Taro、小程序开发或多端开发。当你掌握这些知识之后，你应该可以快速高效地开发多端应用。
 
-- Petting dogs
-- Singing
-- Eating potato-based foods
+## heading 2
+
+在本篇教程中我们假定你已经对 Web 前端开发和 JavaScript 有一定的了解。我们将使用 React 和 Vue 两个框架分别实现我们的应用，在代码实例中点击 React 或 Vue 按钮就可以切换不同的实现。如果你对两个框架都不太熟悉，可以通过 React 文档或 Vue 文档对照代码实现。
+
+### heading 3
+
+目前 Taro 仅提供一种开发方式：安装 Taro 命令行工具（Taro CLI）进行开发。
+
+Taro CLI 依赖于 Node.js 环境，所以在你的机器上必须安装 Node.js 环境。安装 Node.js 环境有很多种方法，如果你完全不了解 Node.js 可以访问 Node.js 官网 下载一个可执行程序进行安装。我们推荐安装 LTS 版本的 Node.js（目前 LTS 版本是 v12）。
+
+#### heading 4
+
+当你的机器已经存在了 Node.js 环境，可以通过在终端输入命令 npm i -g @tarojs/cli 安装 Taro CLI。安装完毕之后，在终端输入命令 taro，如果出现类似内容就说明安装成功了：
+
+##### heading 5
+
+在 Windows 中我们推荐使用内置的 cmd 或 PowerShell。如果有条件推荐安装 WSL 并使用 Linux 分发版的终端运行 Taro CLI。由于 Taro 的开发团队和 CI 都只运行或测试 \*nix 系统，部分 Windows 极端情况或许没能考虑到，导致出现 Bug。
+
+###### heading 6
+
+当你在开发过程中遇到问题时，你可以扫码加入 微信开发者群 提问，或者去 Taro 社区 提问。当你确信是 Taro 有 Bug 时，请随时向 Taro GitHub Issue 提出你的问题。
+**This is bold text**
+
+_This text is italicized_
+
+~~This was mistaken text~~
+
+**This text is _extremely_ important**
+
+**_All this text is important_**
+
+> Text that is a quote
+
+Use `git status` to list all new or modified files that haven't yet been committed.
+
+一些基本的 Git 命令是：
+
+```tsx
+const PostItem: React.FC<PostItemProps> = (props) => {
+  const { slug, date, title, excerpt, imageSrc, imageAlt } = props
+  const image = getImage(imageSrc)!
+  return (
+    <article>
+      <div className={postMobile}>
+        <small className={postDate}>{date}</small>
+        <Link to={`/blog/${slug}`}>
+          <h2 className={postTitle}>{title}</h2>
+          <GatsbyImage className={postImage} image={image} alt={imageAlt} />
+        </Link>
+        <p className={postExcerpt}>{excerpt}</p>
+      </div>
+      <div className={postDesktop}>
+        <GatsbyImage className={postImage} image={image} alt={imageAlt} />
+        <div>
+          <small className={postDate}>{date}</small>
+          <Link to={`/blog/${slug}`}>
+            <h2 className={postTitle}>{title}</h2>
+          </Link>
+          <p className={postExcerpt}>{excerpt}</p>
+        </div>
+      </div>
+    </article>
+  )
+}
+```
+
+The background color should be `#ffffff` for light mode and `#0d1117` for dark mode.
+
+This site was built using [GitHub Pages](https://pages.github.com/).
+
+[Contribution guidelines for this project](docs/CONTRIBUTING.md)
+
+![This is an image](https://myoctocat.com/assets/images/base-octocat.svg)
+
+- George Washington
+
+* John Adams
+
+- Thomas Jefferson
+
+1. James Madison
+2. James Monroe
+3. John Quincy Adams
+
+- [x] #739
+- [ ] https://github.com/octo-org/octo-repo/issues/740
+- [ ] Add delight to the experience when all tasks are complete :tada:
+
+- [ ] \(Optional) Open a followup issue
+
+@octocat :+1: This PR looks great - it's ready to merge! :shipit:
+
+[^1]: My reference.
+[^2]:
+    Every new line should be prefixed with 2 spaces.  
+    This allows you to have a footnote with multiple lines.
+
+[^note]:
+    Named footnotes will still render with numbers instead of the text but allow easier identification and linking.  
+    This footnote also has been made with a different syntax using 4 spaces for new lines.
+
+<div className='fuck'>fuck</div>

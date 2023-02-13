@@ -5,12 +5,19 @@
   src: url(/fonts/Lexend-VariableFont_wght.ttf);
 }
 
-* {
+@font-face {
+  font-family: 'JetBrainsMono';
+  font-weight: 100 900;
+  font-style: monospace;
+  src: url(/fonts/JetBrainsMono-Regular.ttf);
+}
+
+*,
+::before,
+::after {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: 'Lexend', sans-serif;
-  letter-spacing: 0.05rem;
 }
 
 :root {
@@ -43,22 +50,85 @@
   --bg-primary: white;
   --bg-secondary: var(--gray-100);
   --line: var(--gray-200);
+  --text-bg-selected: rgba(20, 184, 166, 0.2);
+
+  /* highlight */
+  --code-blue1: #4b4bd7;
+  --code-blue2: #2b6ec0;
+  --code-blue3: #4f82c0;
+  --code-green: #329886;
+  --code-yellow: #ad8227;
+  --code-orange: #8b2b23;
+  --code-purple: #8d39ae;
 }
 
 :root.dark {
   --text-primary: white;
   --text-secondary: var(--gray-400);
   --text-tertiary: var(--gray-500);
-  --bg-primary: var(--gray-900);
-  --bg-secondary: var(--gray-800);
+  --bg-primary: var(--gray-800);
+  --bg-secondary: var(--gray-900);
   --line: var(--gray-600);
+
+  /* highlight */
+  --code-blue1: #679ad1;
+  --code-blue2: #6fbff9;
+  --code-blue3: #aadafa;
+  --code-green: #71c6b1;
+  --code-yellow: #dcdcaf;
+  --code-orange: #c5947c;
+  --code-purple: #bc89bd;
 }
 
 html {
+  color: var(--text-primary);
   background-color: var(--bg-primary);
+  font-family: 'Lexend', sans-serif;
+  letter-spacing: 0.05rem;
 }
 
+/*
+ 1. Add the correct height in Firefox.
+ 2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
+ 3. Ensure horizontal rules are visible by default.
+ */
+
+hr {
+  height: 0;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  border-top-width: 1px;
+  /* 3 */
+}
+
+/*
+ Remove the default font size and weight for headings.
+ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*
+ Reset links to optimize for opt-in styling instead of opt-out.
+ */
+
 a {
-  color: inherit; /* blue colors for links too */
-  text-decoration: inherit; /* no underline */
+  color: inherit;
+  text-decoration: inherit;
+}
+
+::selection {
+  background-color: var(--text-bg-selected);
+}
+
+::-webkit-scrollbar {
+  display: none;
 }

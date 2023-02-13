@@ -4,6 +4,7 @@ import Seo from '../../components/seo'
 import { graphql } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks'
+import { title, date, heroImage, article } from './post.module.scss'
 
 interface BlogPostPorps {
   data: {
@@ -25,9 +26,14 @@ const BlogPost: React.FC<BlogPostPorps> = ({ data, children }) => {
   const image = getImage(data.mdx.frontmatter.hero_image)!
   return (
     <Layout>
-      <p>{data.mdx.frontmatter.date}</p>
-      <GatsbyImage image={image} alt={data.mdx.frontmatter.hero_image_alt} />
-      {children}
+      <small className={date}>{data.mdx.frontmatter.date}</small>
+      <h1 className={title}>{data.mdx.frontmatter.title}</h1>
+      <GatsbyImage
+        className={heroImage}
+        image={image}
+        alt={data.mdx.frontmatter.hero_image_alt}
+      />
+      <article className={`markdown ${article}`}>{children}</article>
     </Layout>
   )
 }
@@ -37,7 +43,7 @@ export const query = graphql`
     mdx(id: { eq: $id }) {
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "YYYY/MM/DD")
         hero_image_alt
         hero_image_credit_link
         hero_image_credit_text

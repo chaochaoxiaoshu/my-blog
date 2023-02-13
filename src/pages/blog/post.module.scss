@@ -1,0 +1,26 @@
+.article {
+  padding: 0 1.25rem;
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 3.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.date {
+  display: block;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.0625rem;
+  margin: 4rem 0 0.5rem;
+  color: var(--text-tertiary);
+}
+
+.hero-image {
+  margin-bottom: 4rem;
+}

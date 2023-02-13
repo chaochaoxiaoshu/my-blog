@@ -12,8 +12,8 @@ const Navigator: React.FC = () => {
   return (
     <nav className={navigator}>
       <Link to='/'>Home</Link>
-      <Link to='/blog'>Products</Link>
       <Link to='/blog'>Blog</Link>
+      <Link to='/blog'>Products</Link>
       <Link to='/about'>About</Link>
     </nav>
   )

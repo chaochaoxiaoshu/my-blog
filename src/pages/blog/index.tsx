@@ -31,16 +31,16 @@ const PostItem: React.FC<PostItemProps> = (props) => {
   const { slug, date, title, excerpt, imageSrc, imageAlt } = props
   const image = getImage(imageSrc)!
   return (
-    <>
-      <Link style={{ display: 'block' }} to={`/blog/${slug}`}>
-        <article className={postMobile}>
-          <small className={postDate}>{date}</small>
+    <article>
+      <div className={postMobile}>
+        <small className={postDate}>{date}</small>
+        <Link to={`/blog/${slug}`}>
           <h2 className={postTitle}>{title}</h2>
           <GatsbyImage className={postImage} image={image} alt={imageAlt} />
-          <p className={postExcerpt}>{excerpt}</p>
-        </article>
-      </Link>
-      <article className={postDesktop}>
+        </Link>
+        <p className={postExcerpt}>{excerpt}</p>
+      </div>
+      <div className={postDesktop}>
         <GatsbyImage className={postImage} image={image} alt={imageAlt} />
         <div>
           <small className={postDate}>{date}</small>
@@ -49,8 +49,8 @@ const PostItem: React.FC<PostItemProps> = (props) => {
           </Link>
           <p className={postExcerpt}>{excerpt}</p>
         </div>
-      </article>
-    </>
+      </div>
+    </article>
   )
 }
 
@@ -92,7 +92,7 @@ const BlogPage: React.FC<BlogPageProps> = (props) => {
           ))}
         </div>
         <aside className={aside}>
-          <small className={asideSubtitle}>类别</small>
+          <small className={asideSubtitle}>分类</small>
           <span>JavaScript</span>
           <span>CSS</span>
           <span>HTML</span>
@@ -109,7 +109,7 @@ export const query = graphql`
     allMdx(sort: { frontmatter: { date: DESC } }) {
       nodes {
         frontmatter {
-          date(formatString: "MMMM D YYYY")
+          date(formatString: "YYYY/MM/DD")
           title
           slug
           hero_image_alt

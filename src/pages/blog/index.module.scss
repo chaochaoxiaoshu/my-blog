@@ -79,7 +79,8 @@
   margin-bottom: 0.75rem;
 
   @media screen and (min-width: 768px) {
-    max-width: 12.5rem;
+    width: 12.5rem;
+    min-width: 12.5rem;
     margin-bottom: 1.25rem;
     margin-right: 1.25rem;
   }

@@ -5,10 +5,13 @@ import Seo from '../components/seo'
 const IndexPage: React.FC = () => {
   return (
     <Layout>
-      <p>
-        I'm making 中文字体测试 this by following 中文字体测试 the Gatsby
-        Tutorial.中文字体测试
-      </p>
+      <div style={{ padding: '0 1.25rem' }}>
+        <h1>I was the pilot of the shooting star.</h1>
+        <p>
+          I'm making 中文字体测试 this by following 中文字体测试 the Gatsby
+          Tutorial.中文字体测试
+        </p>
+      </div>
     </Layout>
   )
 }
