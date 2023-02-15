@@ -32,14 +32,14 @@ const PostItem: React.FC<PostItemProps> = (props) => {
   const image = getImage(imageSrc)!
   return (
     <article>
-      <div className={postMobile}>
-        <small className={postDate}>{date}</small>
-        <Link to={`/blog/${slug}`}>
+      <Link to={`/blog/${slug}`}>
+        <div className={postMobile}>
+          <small className={postDate}>{date}</small>
           <h2 className={postTitle}>{title}</h2>
           <GatsbyImage className={postImage} image={image} alt={imageAlt} />
-        </Link>
-        <p className={postExcerpt}>{excerpt}</p>
-      </div>
+          <p className={postExcerpt}>{excerpt}</p>
+        </div>
+      </Link>
       <div className={postDesktop}>
         <GatsbyImage className={postImage} image={image} alt={imageAlt} />
         <div>
