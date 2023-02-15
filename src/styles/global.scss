@@ -1,8 +1,8 @@
 @font-face {
-  font-family: 'Lexend';
+  font-family: 'Urbanist';
   font-weight: 100 900;
   font-style: normal;
-  src: url(/fonts/Lexend-VariableFont_wght.ttf);
+  src: url(/fonts/Urbanist-VariableFont_wght.ttf);
 }
 
 @font-face {
@@ -83,7 +83,7 @@
 html {
   color: var(--text-primary);
   background-color: var(--bg-primary);
-  font-family: 'Lexend', sans-serif;
+  font-family: 'Urbanist', sans-serif;
   letter-spacing: 0.05rem;
 }
 
