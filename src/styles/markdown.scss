@@ -374,12 +374,13 @@
 
   /* blockquote */
   blockquote {
-    color: var(--text-primary);
+    color: var(--text-secondary);
     quotes: none;
     margin-top: 1.6em;
     margin-bottom: 1.6em;
     padding: 0.25em 1.0666667em;
     background-color: var(--bg-secondary);
+    border-radius: 4px;
   }
 
   blockquote p:first-of-type::before {
@@ -406,7 +407,6 @@
     line-height: 1.67;
     margin-top: 1em;
     margin-bottom: 1em;
-    text-align: justify;
   }
 
   strong,

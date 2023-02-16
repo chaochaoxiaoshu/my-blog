@@ -1,18 +1,76 @@
+$header-height: 5rem;
+
 .header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100vw;
   max-width: 80rem;
-  height: 5rem;
+  height: $header-height;
   padding: 1.25rem;
   margin: 0 auto;
   color: var(--text-primary);
 }
 
-.menu {
+.header-logo {
+  width: 2rem;
+  height: 2rem;
+}
+
+.burger-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0.125rem 0;
+
+  transition: all ease-out 0.3s;
+  transform: translate3d(0);
+  will-change: auto;
+
+  &.active {
+    transform: rotate(45deg);
+  }
+
+  &.active .burger-menu-bar:nth-child(1),
+  &.active .burger-menu-bar:nth-child(3) {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+
   @media screen and (min-width: 768px) {
     display: none;
+  }
+}
+
+.burger-menu-bar {
+  width: 1.25rem;
+  height: 0.125rem;
+  background-color: var(--text-primary);
+  border-radius: 0.125rem;
+
+  transform: scaleX(1);
+  transition: all ease-out 0.3s;
+}
+
+.burger-menu-bar-x {
+  position: absolute;
+  width: 0.125rem;
+  height: 1.25rem;
+  background-color: var(--text-primary);
+  border-radius: 0.125rem;
+
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: all ease-out 0.3s;
+  opacity: 0;
+
+  &.active {
+    transform: scaleY(1);
+    opacity: 1;
   }
 }
 
@@ -50,4 +108,43 @@
   @media screen and (min-width: 768px) {
     display: flex;
   }
+}
+
+.dropdown {
+  z-index: 50;
+  position: absolute;
+  top: $header-height;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--bg-primary);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform ease-out 0.3s;
+  will-change: auto;
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+
+  &.active {
+    transform: scaleY(1);
+  }
+}
+
+.navigator-dropdown {
+  padding: 0 1.25rem;
+  & a {
+    display: block;
+    padding: 0.5rem 0;
+    margin: 2rem 0;
+    color: var(--text-primary);
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+}
+
+.actions-dropdown {
+  padding: 0 1.25rem;
+  margin: 3rem 0;
 }
