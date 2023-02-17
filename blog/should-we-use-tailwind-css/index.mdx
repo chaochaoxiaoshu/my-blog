@@ -1,0 +1,78 @@
+---
+title: 'Tailwind CSS的优缺点'
+date: '2023-02-17'
+slug: 'should-we-use-tailwind-css'
+hero_image: './Tailwind.png'
+hero_image_alt: 'Tailwind CSS'
+---
+
+> 这篇文章假定你了解 Tailwind CSS，如果还不了解，请移步：[Tailwind CSS](https://tailwindcss.com)。
+
+从表面来看，Tailwind CSS 提供了一种全新的组织 CSS 代码的方式，即将 CSS 书写在 HTML 的 `class` attribute 中，关于这种方式的利弊，Tailwind 的忠实信徒与 CSS 原教旨主义者甚至在 Twitter 上爆发了一场史诗级的争辩。当我初次了解到 Tailwind 时也一度被其吸引，然而在使用了很长一段时间之后，我还是用回了 CSS Module + Sass。
+
+## Tailwind 直观的缺陷
+
+### 1. 冗长的类名
+
+Tailwind 提供了开箱即用的响应式设计、深色模式、伪类等功能，然而全部应用这些功能时，HTML 看起来是这样的：
+
+```html
+<h3
+  class="my-2 text-2xl font-semibold text-gray-900 leading-tight line-clamp-2
+  cursor-pointer hover:underline decoration-gray-900 dark:decoration-gray-100
+  underline-offset-2 dark:text-gray-100 hover:underline decoration-gray-900 
+  dark:decoration-gray-100 underline-offset-2"
+>
+  title
+</h3>
+```
+
+这样的 CSS 看起来并不容易维护，到处充斥着这样冗长类名的 HTML 也几乎没有可读性可言。尽管可以在 CSS 文件中搭配`@apply`修饰符使用 Tailwind，但那样也会使 Tailwind 失去打包体积优势。
+
+### 2. 需要依赖组件封装的可复用性
+
+在 HTML 中书写 Tailwind，在遇到类似 nav items 的重复项时，原生的 CSS 可以重复使用一个类名，而 Tailwind 只能重复复制一大串类名，像这样：
+
+```html
+<nav>
+  <a class="text-gray-900 dark:text-white text-md md:text-lg font-semibold"
+    >Home</a
+  >
+  <a class="text-gray-900 dark:text-white text-md md:text-lg font-semibold"
+    >Blog</a
+  >
+  <a class="text-gray-900 dark:text-white text-md md:text-lg font-semibold"
+    >Products</a
+  >
+  <a class="text-gray-900 dark:text-white text-md md:text-lg font-semibold"
+    >About</a
+  >
+</nav>
+```
+
+Tailwind 官方给出的说法是当 Tailwind 配合 React、Vue 这样的框架使用时，通过封装组件，Tailwind 便拥有了可复用性。但我看到许多人表示不理解，因为在使用 React 等框架时，CSS Module、CSS in JS、scoped 等方案配合 Sass、less 等预处理器，可以保证相当好的可维护性。
+
+## Tailwind 的优点
+
+### 1. 细粒度
+
+一些传统的 CSS 框架/库（例如 Bootstrap）有着强烈的既定风格，内行人能一眼看出来哪些网站使用了哪个 CSS 框架。而 Tailwind 的颗粒度介于原生 CSS 与传统的 CSS 框架之间，即使 Tailwind 依旧给出了一套武断的默认设定，但基于此设定还是可以组合出无限多种风格各异的样式。
+
+### 2. 约束
+
+Tailwind 的“原子类”设计基于一套科学的设计系统，包括但不限于：
+
+- 以 4px 为基准的栅格系统
+- 一套开箱即用的调色板
+
+这为前端编写 CSS 提供了品质保证，使用 Tailwind 就是在使用一套科学的设计系统。
+
+## 谁最适合使用 Tailwind ？
+
+- 对于个人项目，需要为自己做设计，但压根不懂设计。
+- 能与团队的设计人员达成共识，使用 Tailwind 的设计系统或基于 Tailwind 定制设计系统。
+- 超级讨厌 class 命名。
+
+## 总结
+
+Tailwind 贯彻了“原子化”与“组合大于继承”的思想，避免了因为滥用级联和继承导致的 CSS 难以维护的问题，然而新的问题也随之出现：并不是所有人都甘愿以 HTML 和 CSS 的可读性来换取便利。Tailwind 的思想十分超前和现代，但在 HTML 中书写 CSS 一定不是最好的方式。

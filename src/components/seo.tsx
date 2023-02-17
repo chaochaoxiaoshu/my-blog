@@ -17,9 +17,12 @@ const Seo: React.FC<SeoProps> = ({ title }) => {
   `)
 
   return (
-    <title>
-      {title} | {data.site.siteMetadata.title}
-    </title>
+    <>
+      <title>
+        {title} | {data.site.siteMetadata.title}
+      </title>
+      <link rel='icon' type='svg' href='/logo.svg'></link>
+    </>
   )
 }
 

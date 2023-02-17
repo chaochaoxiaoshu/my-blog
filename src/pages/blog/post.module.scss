@@ -1,11 +1,19 @@
+.page {
+  position: relative;
+  display: flex;
+}
+
 .article {
+  flex-grow: 1;
   padding: 0 1.25rem;
+}
+
+.inside-article {
   max-width: 48rem;
   margin: 0 auto;
 }
 
 .title {
-  text-align: center;
   font-size: 2.5rem;
   font-weight: 500;
   line-height: 3.5rem;
@@ -14,13 +22,48 @@
 
 .date {
   display: block;
-  text-align: center;
   font-size: 0.875rem;
   line-height: 1.0625rem;
+  letter-spacing: 0.1rem;
   margin: 4rem 0 0.5rem;
   color: var(--text-tertiary);
 }
 
 .hero-image {
-  margin-bottom: 4rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.aside {
+  display: none;
+  width: 18rem;
+  height: 100vh;
+  padding: 4rem 1.25rem;
+  overflow: scroll;
+
+  @media screen and (min-width: 1024px) {
+    position: sticky;
+    top: 0;
+    display: block;
+  }
+}
+
+.aside-title {
+  margin-bottom: 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.0625rem;
+  color: var(--text-primary);
+}
+
+.aside-link {
+  display: block;
+  font-size: 0.875rem;
+  line-height: 1.0625rem;
+  margin-bottom: 1.25rem;
+  color: var(--text-secondary);
+  transition: color ease-out 0.3s;
+
+  &:hover {
+    color: var(--text-primary);
+  }
 }

@@ -6,6 +6,13 @@
 }
 
 @font-face {
+  font-family: 'Figtree';
+  font-weight: 100 900;
+  font-style: normal;
+  src: url(/fonts/Figtree-VariableFont_wght.ttf);
+}
+
+@font-face {
   font-family: 'JetBrainsMono';
   font-weight: 100 900;
   font-style: monospace;
@@ -83,7 +90,8 @@
 html {
   color: var(--text-primary);
   background-color: var(--bg-primary);
-  font-family: 'Urbanist', sans-serif;
+  font-family: 'Figtree', sans-serif;
+  // font-family: sans-serif;
   letter-spacing: 0.05rem;
 }
 

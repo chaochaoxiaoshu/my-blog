@@ -7,6 +7,7 @@
 }
 
 .wrapper {
+  flex: 1;
   padding: 0 1.25rem;
 
   & > * {
@@ -44,6 +45,7 @@
   margin-bottom: 0.25rem;
   font-size: 0.875rem;
   line-height: 1.0625rem;
+  letter-spacing: 0.1rem;
   color: var(--text-tertiary);
 }
 
@@ -88,23 +90,27 @@
 }
 
 .aside {
-  flex: 40%;
   display: none;
+  width: 20rem;
   padding: 0 1.25rem;
-  margin-left: 2.5rem;
-
-  & > * {
-    display: block;
-    margin-bottom: 1.25rem;
-    color: var(--teal-500);
-  }
+  margin-left: 2rem;
 
   @media screen and (min-width: 1024px) {
     display: block;
   }
 }
 
-.aside-subtitle {
+.aside-title {
+  margin-bottom: 1.25rem;
   font-size: 0.875rem;
-  color: var(--text-secondary);
+  line-height: 1.0625rem;
+  color: var(--text-primary);
+}
+
+.aside-link {
+  display: block;
+  font-size: 0.875rem;
+  line-height: 1.0625rem;
+  margin-bottom: 1.25rem;
+  color: var(--teal-500);
 }

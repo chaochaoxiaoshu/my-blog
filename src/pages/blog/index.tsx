@@ -14,9 +14,10 @@ import {
   postExcerpt,
   postImage,
   aside,
-  asideSubtitle,
+  asideTitle,
+  asideLink,
 } from './index.module.scss'
-import Hero from '../../components/hero'
+import Hero from '../../components/section-heading'
 
 interface PostItemProps {
   slug: string
@@ -92,12 +93,12 @@ const BlogPage: React.FC<BlogPageProps> = (props) => {
           ))}
         </div>
         <aside className={aside}>
-          <small className={asideSubtitle}>分类</small>
-          <span>JavaScript</span>
-          <span>CSS</span>
-          <span>HTML</span>
-          <span>TypeScript</span>
-          <span>Node.js</span>
+          <div className={asideTitle}>分类</div>
+          <span className={asideLink}>JavaScript</span>
+          <span className={asideLink}>CSS</span>
+          <span className={asideLink}>HTML</span>
+          <span className={asideLink}>TypeScript</span>
+          <span className={asideLink}>Node.js</span>
         </aside>
       </div>
     </Layout>

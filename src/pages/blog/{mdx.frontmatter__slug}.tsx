@@ -4,11 +4,30 @@ import Seo from '../../components/seo'
 import { graphql } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { FileNode } from 'gatsby-plugin-image/dist/src/components/hooks'
-import { title, date, heroImage, article } from './post.module.scss'
+import {
+  page,
+  article,
+  insideArticle,
+  title,
+  date,
+  heroImage,
+  aside,
+  asideTitle,
+  asideLink,
+} from './post.module.scss'
+
+interface TableOfContentsItem {
+  url: string
+  title: string
+  items?: TableOfContentsItem[]
+}
 
 interface BlogPostPorps {
   data: {
     mdx: {
+      tableOfContents: {
+        items?: TableOfContentsItem[]
+      }
       frontmatter: {
         title: string
         date: string
@@ -24,16 +43,45 @@ interface BlogPostPorps {
 
 const BlogPost: React.FC<BlogPostPorps> = ({ data, children }) => {
   const image = getImage(data.mdx.frontmatter.hero_image)!
+  const tableOfContent = data.mdx.tableOfContents.items
+
   return (
     <Layout>
-      <small className={date}>{data.mdx.frontmatter.date}</small>
-      <h1 className={title}>{data.mdx.frontmatter.title}</h1>
-      <GatsbyImage
-        className={heroImage}
-        image={image}
-        alt={data.mdx.frontmatter.hero_image_alt}
-      />
-      <article className={`markdown ${article}`}>{children}</article>
+      <div className={page}>
+        <article className={article}>
+          <div className={insideArticle}>
+            <small className={date}>{data.mdx.frontmatter.date}</small>
+            <h1 className={title}>{data.mdx.frontmatter.title}</h1>
+            <GatsbyImage
+              className={heroImage}
+              image={image}
+              alt={data.mdx.frontmatter.hero_image_alt}
+            />
+            <div className={`markdown`}>{children}</div>
+          </div>
+        </article>
+        {tableOfContent && (
+          <aside className={aside}>
+            <div className={asideTitle}>本篇目录</div>
+            {tableOfContent?.map((item) => (
+              <>
+                <a className={asideLink} href={item.url}>
+                  {item.title}
+                </a>
+                {item.items?.map((subItem) => (
+                  <a
+                    style={{ paddingLeft: '0.8rem' }}
+                    className={asideLink}
+                    href={subItem.url}
+                  >
+                    {subItem.title}
+                  </a>
+                ))}
+              </>
+            ))}
+          </aside>
+        )}
+      </div>
     </Layout>
   )
 }
@@ -51,6 +99,7 @@ export const query = graphql`
           }
         }
       }
+      tableOfContents
     }
   }
 `
