@@ -1,16 +1,13 @@
 import * as React from 'react'
 import Layout from '../components/layout'
 import Seo from '../components/seo'
+import { heroTitle } from './index.module.scss'
 
 const IndexPage: React.FC = () => {
   return (
     <Layout>
       <div style={{ padding: '0 1.25rem' }}>
-        <h1>I was the pilot of the shooting star.</h1>
-        <p>
-          I'm making 中文字体测试 this by following 中文字体测试 the Gatsby
-          Tutorial.中文字体测试
-        </p>
+        <h1 className={heroTitle}>爱屏幕上发生的一切</h1>
       </div>
     </Layout>
   )

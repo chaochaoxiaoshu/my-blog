@@ -95,7 +95,7 @@ export const query = graphql`
         hero_image_alt
         hero_image {
           childImageSharp {
-            gatsbyImageData(placeholder: BLURRED)
+            gatsbyImageData
           }
         }
       }

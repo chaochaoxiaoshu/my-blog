@@ -109,7 +109,6 @@
   h4,
   h5,
   h6,
-  hr,
   figure,
   p,
   pre {
@@ -300,6 +299,7 @@
   li {
     margin-top: 0.6em;
     margin-bottom: 0.6em;
+    letter-spacing: 0.1em;
   }
 
   ul {
@@ -376,8 +376,8 @@
   blockquote {
     color: var(--text-secondary);
     quotes: none;
-    margin-top: 1.6em;
-    margin-bottom: 1.6em;
+    margin-top: 1em;
+    margin-bottom: 1em;
     padding: 0.25em 1.0666667em;
     background-color: var(--bg-secondary);
     border-radius: 4px;
@@ -393,13 +393,11 @@
 
   /* hr */
   hr {
-    border-color: var(--line);
-    border-top-width: 1px;
-  }
-
-  [mdtype='hr'] {
-    margin-top: 2.8em;
-    margin-bottom: 2.8em;
+    display: block;
+    height: 1px;
+    margin: 3.6em 0;
+    border: none;
+    background-color: var(--line);
   }
 
   p {
