@@ -76,12 +76,12 @@
   }
 
   & .post-image-left {
-    display: none;
+    display: none !important;
   }
 
   & .post-image {
     @media screen and (min-width: 768px) {
-      display: block;
+      display: block !important;
     }
   }
 
@@ -156,7 +156,7 @@
   margin-bottom: 1.25rem;
   margin-right: 1.25rem;
   @media screen and (min-width: 768px) {
-    display: block;
+    display: block !important;
   }
 
   @media screen and (min-width: 1024px) {
