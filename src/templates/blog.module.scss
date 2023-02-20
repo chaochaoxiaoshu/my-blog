@@ -70,18 +70,19 @@
   }
 }
 
+// .wrapper 中第一个 article 中的 .post-item
 .wrapper > article:first-child .post-item {
   @media screen and (min-width: 768px) {
     display: block;
   }
 
   & .post-image-left {
-    display: none !important;
+    display: none;
   }
 
   & .post-image {
     @media screen and (min-width: 768px) {
-      display: block !important;
+      display: block;
     }
   }
 
@@ -143,9 +144,8 @@
 
 .post-image {
   margin-bottom: 0.75rem;
-
   @media screen and (min-width: 768px) {
-    display: none !important;
+    display: none;
   }
 }
 
@@ -153,10 +153,11 @@
   display: none;
   width: 12.5rem;
   min-width: 12.5rem;
-  margin-bottom: 1.25rem;
   margin-right: 1.25rem;
+  margin-bottom: 1.25rem;
+
   @media screen and (min-width: 768px) {
-    display: block !important;
+    display: block;
   }
 
   @media screen and (min-width: 1024px) {

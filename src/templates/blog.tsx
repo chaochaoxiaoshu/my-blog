@@ -46,11 +46,16 @@ const PostItem: React.FC<PostItemProps> = (props) => {
     <article>
       <Link to={`/blog/${slug}`}>
         <div className={postItem}>
-          <GatsbyImage className={postImageLeft} image={image} alt={imageAlt} />
+          {/* gatsby-plugin-image 默认的css样式声明于用户声明之后，无法覆盖，所以包裹一个div */}
+          <div className={postImageLeft}>
+            <GatsbyImage image={image} alt={imageAlt} />
+          </div>
           <div>
             <small className={postDate}>{date}</small>
             <h2 className={postTitle}>{title}</h2>
-            <GatsbyImage className={postImage} image={image} alt={imageAlt} />
+            <div className={postImage}>
+              <GatsbyImage image={image} alt={imageAlt} />
+            </div>
             <p className={postExcerpt}>{excerpt}</p>
           </div>
         </div>
