@@ -47,9 +47,16 @@
   font-size: 0.875rem;
   line-height: 1.0625rem;
   border-radius: 999em;
+  user-select: none;
+  -webkit-user-drag: none;
+
+  &:hover {
+    background-color: var(--bg-secondary);
+  }
 }
 
 .tag-item.active {
+  border: 0;
   color: var(--text-primary-reverse);
   background-color: var(--text-primary);
 }
@@ -154,9 +161,16 @@
   font-size: 0.875rem;
   line-height: 1.0625rem;
   border-radius: 999em;
+  user-select: none;
+  -webkit-user-drag: none;
+
+  &:hover {
+    background-color: var(--bg-secondary);
+  }
 }
 
 .aside-link.active {
+  border: 0;
   color: var(--text-primary-reverse);
   background-color: var(--text-primary);
 }

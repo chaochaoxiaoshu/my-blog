@@ -1,11 +1,17 @@
 import * as React from 'react'
+import type { CSSProperties } from 'react'
 import { footer } from './footer.module.scss'
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  style?: CSSProperties
+}
+
+const Footer: React.FC<FooterProps> = (props) => {
   const date = new Date()
   return (
-    <footer className={footer}>
-      Copyright &copy; {date.getFullYear()} RealGlow. All rights reserved.
+    <footer style={props.style} className={footer}>
+      Copyright &copy; {date.getFullYear()} Zhang Xin.
+      <br /> All rights reserved.
     </footer>
   )
 }

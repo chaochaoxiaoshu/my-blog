@@ -1,0 +1,72 @@
+// Algolia 搜索组件的样式在 /src/styles/search-box.css 中
+
+.my-search-container {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  width: calc(100vw - 2rem);
+  max-width: 640px;
+  height: 50vh;
+  background-color: var(--bg-primary);
+  border-radius: 0.5em;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+@media screen and (min-width: 768px) {
+  .my-search-container {
+    top: 10vh;
+    width: 60vw;
+    height: 72vh;
+  }
+}
+
+.search-header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.search-icon {
+  margin: 0 0.8rem;
+  color: var(--text-secondary);
+}
+
+.esc-button {
+  width: 2.2rem;
+  height: 2rem;
+  padding: 0.2rem 0.3rem;
+  margin: 0 0.8rem;
+  border: 1px solid var(--line);
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: none;
+  border-radius: 0.5em;
+  cursor: pointer;
+  transition: all ease-out 0.25s;
+}
+
+.esc-button:hover {
+  border: 1.5px solid var(--line);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.search-footer {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 3rem;
+  padding: 0 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.logo-label {
+  margin-right: 0.8rem;
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}

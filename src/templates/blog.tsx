@@ -107,7 +107,7 @@ const BlogPage: React.FC<BlogPageProps> = (props) => {
           <div className={tagsGroup}>
             <Link
               to='/blog'
-              className={`${tagItem} ${path === '/blog/' ? active : ''}`}
+              className={`${tagItem} ${path === '/blog/' && active}`}
             >
               全部
             </Link>
@@ -115,7 +115,7 @@ const BlogPage: React.FC<BlogPageProps> = (props) => {
               <Link
                 key={item.tag}
                 to={`/blog/tags/${_.kebabCase(item.tag)}`}
-                className={`${tagItem} ${tagIsActive(item.tag) ? active : ''}`}
+                className={`${tagItem} ${tagIsActive(item.tag) && active}`}
               >
                 {item.tag} ({item.totalCount})
               </Link>
@@ -140,7 +140,7 @@ const BlogPage: React.FC<BlogPageProps> = (props) => {
           <div className={asideLinkGroup}>
             <Link
               to='/blog'
-              className={`${asideLink} ${path === '/blog/' ? active : ''}`}
+              className={`${asideLink} ${path === '/blog/' && active}`}
             >
               全部
             </Link>
@@ -148,9 +148,7 @@ const BlogPage: React.FC<BlogPageProps> = (props) => {
               <Link
                 key={item.tag}
                 to={`/blog/tags/${_.kebabCase(item.tag)}`}
-                className={`${asideLink} ${
-                  tagIsActive(item.tag) ? active : ''
-                }`}
+                className={`${asideLink} ${tagIsActive(item.tag) && active}`}
               >
                 {item.tag} ({item.totalCount})
               </Link>

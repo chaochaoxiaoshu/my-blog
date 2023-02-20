@@ -2,6 +2,7 @@ import * as React from 'react'
 import Layout from '../components/layout'
 import Seo from '../components/seo'
 import { heroTitle } from './index.module.scss'
+import MySearchBox from '../components/search-box'
 
 const IndexPage: React.FC = () => {
   return (

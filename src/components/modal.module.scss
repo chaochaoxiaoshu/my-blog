@@ -1,0 +1,15 @@
+.modal {
+  z-index: 50;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(24, 24, 27, 0.2);
+  backdrop-filter: blur(2px);
+}
+
+.modal.visible {
+  display: block;
+}

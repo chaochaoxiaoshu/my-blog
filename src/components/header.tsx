@@ -1,6 +1,10 @@
+// React
 import * as React from 'react'
+import { useState } from 'react'
+// Components
 import { Link } from 'gatsby'
-
+import MySearchContainer from './search-box'
+// Styles
 import {
   header,
   headerLogo,
@@ -10,15 +14,19 @@ import {
   burgerMenuBarX,
   navigator,
   actions,
+  actionsMobile,
   dropdown,
   navigatorDropdown,
   actionsDropdown,
 } from './header.module.scss'
+// Icons
 import Logo from '../images/svg/logo.svg'
-import Search from '../images/svg/search.svg'
+import SearchIcon from '../images/svg/search.svg'
 import Sun from '../images/svg/sun.svg'
 import Moon from '../images/svg/moon.svg'
-import { Dispatch, SetStateAction, useState } from 'react'
+// Types
+import type { CSSProperties, Dispatch, SetStateAction } from 'react'
+import Modal from './modal'
 
 const Navigator: React.FC = () => {
   return (
@@ -49,34 +57,34 @@ const ThemePicker: React.FC<ThemePickerProps> = (props) => {
   )
 }
 
-interface ActiveProps {
-  isActive: boolean
-  setIsActive: Dispatch<SetStateAction<boolean>>
+interface ToggleDropdownProps {
+  isShow: boolean
+  setIsShow: Dispatch<SetStateAction<boolean>>
 }
 
-const BurgerMenu: React.FC<ActiveProps> = (props) => {
-  const { isActive, setIsActive } = props
+const BurgerMenu: React.FC<ToggleDropdownProps> = (props) => {
+  const { isShow, setIsShow } = props
   return (
     <div
-      className={`${isActive ? active : ''} ${burgerMenu}`}
-      onClick={() => setIsActive(!isActive)}
+      className={`${isShow && active} ${burgerMenu}`}
+      onClick={() => setIsShow(!isShow)}
     >
       <span className={`${burgerMenuBar}`} />
       <span className={`${burgerMenuBar}`} />
       <span className={`${burgerMenuBar}`} />
-      <span className={`${isActive ? active : ''} ${burgerMenuBarX}`} />
+      <span className={`${isShow && active} ${burgerMenuBarX}`} />
     </div>
   )
 }
 
-interface DropdownProps extends ActiveProps {
+interface DropdownProps extends ToggleDropdownProps {
   useTheme: [string, (theme: string) => void]
 }
 
 const Dropdown: React.FC<DropdownProps> = (props) => {
-  const { isActive } = props
+  const { isShow } = props
   return (
-    <div className={`${isActive ? active : ''} ${dropdown}`}>
+    <div className={`${isShow ? active : ''} ${dropdown}`}>
       <nav className={`${navigatorDropdown}`}>
         <Link to='/'>Home</Link>
         <Link to='/blog'>Blog</Link>
@@ -90,31 +98,53 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
   )
 }
 
+interface SearchModalProps {
+  isShow: boolean
+  setIsShow: Dispatch<SetStateAction<boolean>>
+}
+
+const SearchModal: React.FC<SearchModalProps> = (props) => {
+  const { isShow, setIsShow } = props
+  return (
+    <Modal isShow={isShow} onClick={() => setIsShow(false)}>
+      <MySearchContainer setIsShow={setIsShow} />
+    </Modal>
+  )
+}
+
 interface HeaderProps {
+  style?: CSSProperties
   useTheme: [string, (theme: string) => void]
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
-  const [isActive, setIsActive] = useState(false)
+  const [isShowDropdown, setIsShowDropdown] = useState(false)
+  const [isShowSearch, setIsShowSearch] = useState(false)
   return (
-    <header className={header}>
-      <Link className={headerLogo} to='/'>
-        <Logo />
-      </Link>
-      {/* Desktop only */}
-      <Navigator />
-      <div className={actions}>
-        <ThemePicker useTheme={props.useTheme} />
-        <Search />
-      </div>
-      {/* Mobile only */}
-      <BurgerMenu isActive={isActive} setIsActive={setIsActive} />
-      <Dropdown
-        isActive={isActive}
-        setIsActive={setIsActive}
-        useTheme={props.useTheme}
-      />
-    </header>
+    <>
+      <header style={props.style} className={header}>
+        <Link className={headerLogo} to='/'>
+          <Logo />
+        </Link>
+        {/* Desktop only */}
+        <Navigator />
+        <div className={actions}>
+          <ThemePicker useTheme={props.useTheme} />
+          <SearchIcon onClick={() => setIsShowSearch(true)} />
+        </div>
+        {/* Mobile only */}
+        <div className={actionsMobile}>
+          <SearchIcon onClick={() => setIsShowSearch(true)} />
+          <BurgerMenu isShow={isShowDropdown} setIsShow={setIsShowDropdown} />
+        </div>
+        <Dropdown
+          isShow={isShowDropdown}
+          setIsShow={setIsShowDropdown}
+          useTheme={props.useTheme}
+        />
+      </header>
+      <SearchModal isShow={isShowSearch} setIsShow={setIsShowSearch} />
+    </>
   )
 }
 

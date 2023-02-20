@@ -58,7 +58,7 @@
   --text-tertiary: var(--gray-400);
   --bg-primary: white;
   --bg-secondary: var(--gray-100);
-  --line: var(--gray-200);
+  --line: var(--gray-100);
   --text-bg-selected: rgba(20, 184, 166, 0.2);
   --text-primary-reverse: white;
 
@@ -78,7 +78,7 @@
   --text-tertiary: var(--gray-500);
   --bg-primary: var(--gray-800);
   --bg-secondary: var(--gray-900);
-  --line: var(--gray-600);
+  --line: var(--gray-700);
   --text-primary-reverse: var(--gray-800);
 
   /* highlight */
@@ -138,8 +138,4 @@ a {
 
 ::selection {
   background-color: var(--text-bg-selected);
-}
-
-::-webkit-scrollbar {
-  display: none;
 }

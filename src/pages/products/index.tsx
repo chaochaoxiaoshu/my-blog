@@ -5,7 +5,7 @@ import Seo from '../../components/seo'
 const Products = () => {
   return (
     <Layout>
-      <p>Products Page</p>
+      <p>这个页面还没写好😢</p>
     </Layout>
   )
 }
