@@ -7,8 +7,7 @@
 }
 
 .content {
-  flex: 1;
-  width: 100%;
+  flex: 72%;
 }
 
 .wrapper {
@@ -22,6 +21,12 @@
   @media screen and (min-width: 768px) {
     & > * {
       margin-bottom: 1.25rem;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    & > * {
+      margin-bottom: 1.6rem;
     }
   }
 }
@@ -41,18 +46,14 @@
 .tag-item {
   flex-shrink: 0;
   padding: 0.5em 1em;
-  margin: 0 0.8em 0.8em 0;
+  margin: 0 0.5em 0.5em 0;
   border: 1px solid var(--line);
   color: var(--text-secondary);
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   line-height: 1.0625rem;
   border-radius: 999em;
   user-select: none;
   -webkit-user-drag: none;
-
-  &:hover {
-    background-color: var(--bg-secondary);
-  }
 }
 
 .tag-item.active {
@@ -61,22 +62,40 @@
   background-color: var(--text-primary);
 }
 
-.post-mobile {
-  @include divider();
-
-  @media screen and (min-width: 768px) {
-    display: none;
-  }
-}
-
-.post-desktop {
-  display: none;
-  flex-direction: row;
-
+.post-item {
   @include divider();
 
   @media screen and (min-width: 768px) {
     display: flex;
+  }
+}
+
+.wrapper > article:first-child .post-item {
+  @media screen and (min-width: 768px) {
+    display: block;
+  }
+
+  & .post-image-left {
+    display: none;
+  }
+
+  & .post-image {
+    @media screen and (min-width: 768px) {
+      display: block;
+    }
+  }
+
+  & .post-title {
+    @media screen and (min-width: 1024px) {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  & .post-date {
+    @media screen and (min-width: 1024px) {
+      margin-bottom: 0.6rem;
+    }
   }
 }
 
@@ -116,16 +135,32 @@
   @media screen and (min-width: 768px) {
     line-height: 1.75rem;
   }
+
+  @media screen and (min-width: 1024px) {
+    margin-bottom: 1.6rem;
+  }
 }
 
 .post-image {
   margin-bottom: 0.75rem;
 
   @media screen and (min-width: 768px) {
-    width: 12.5rem;
-    min-width: 12.5rem;
-    margin-bottom: 1.25rem;
-    margin-right: 1.25rem;
+    display: none;
+  }
+}
+
+.post-image-left {
+  display: none;
+  width: 12.5rem;
+  min-width: 12.5rem;
+  margin-bottom: 1.25rem;
+  margin-right: 1.25rem;
+  @media screen and (min-width: 768px) {
+    display: block;
+  }
+
+  @media screen and (min-width: 1024px) {
+    margin-bottom: 1.6rem;
   }
 }
 
@@ -137,6 +172,7 @@
 
   @media screen and (min-width: 1024px) {
     display: block;
+    flex: 28;
   }
 }
 

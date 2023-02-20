@@ -1,3 +1,5 @@
+import { createContentDigest } from 'gatsby-core-utils'
+
 const indexName = `Pages`
 
 const pageQuery = `{
@@ -29,11 +31,18 @@ interface QueryResult {
 }
 
 function pageToAlgoliaRecord({ node }: QueryResult) {
-  const { id, frontmatter, excerpt } = node
+  const newNode = {
+    ...node,
+    internal: {
+      contentDigest: createContentDigest(node),
+    },
+  }
+  const { id, frontmatter, excerpt, internal } = newNode
   return {
     objectID: id,
     ...frontmatter,
     excerpt,
+    internal,
   }
 }
 

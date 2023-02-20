@@ -17,12 +17,12 @@ import {
   wrapper,
   tagsGroup,
   tagItem,
-  postMobile,
-  postDesktop,
+  postItem,
   postDate,
   postTitle,
   postExcerpt,
   postImage,
+  postImageLeft,
   aside,
   asideTitle,
   asideLink,
@@ -45,23 +45,16 @@ const PostItem: React.FC<PostItemProps> = (props) => {
   return (
     <article>
       <Link to={`/blog/${slug}`}>
-        <div className={postMobile}>
-          <small className={postDate}>{date}</small>
-          <h2 className={postTitle}>{title}</h2>
-          <GatsbyImage className={postImage} image={image} alt={imageAlt} />
-          <p className={postExcerpt}>{excerpt}</p>
+        <div className={postItem}>
+          <GatsbyImage className={postImageLeft} image={image} alt={imageAlt} />
+          <div>
+            <small className={postDate}>{date}</small>
+            <h2 className={postTitle}>{title}</h2>
+            <GatsbyImage className={postImage} image={image} alt={imageAlt} />
+            <p className={postExcerpt}>{excerpt}</p>
+          </div>
         </div>
       </Link>
-      <div className={postDesktop}>
-        <GatsbyImage className={postImage} image={image} alt={imageAlt} />
-        <div>
-          <small className={postDate}>{date}</small>
-          <Link to={`/blog/${slug}`}>
-            <h2 className={postTitle}>{title}</h2>
-          </Link>
-          <p className={postExcerpt}>{excerpt}</p>
-        </div>
-      </div>
     </article>
   )
 }

@@ -1,15 +1,9 @@
 @font-face {
-  font-family: 'Urbanist';
-  font-weight: 100 900;
-  font-style: normal;
-  src: url(/fonts/Urbanist-VariableFont_wght.ttf);
-}
-
-@font-face {
   font-family: 'Figtree';
   font-weight: 100 900;
   font-style: normal;
   src: url(/fonts/Figtree-VariableFont_wght.ttf);
+  font-display: swap;
 }
 
 @font-face {
@@ -17,6 +11,7 @@
   font-weight: 100 900;
   font-style: monospace;
   src: url(/fonts/JetBrainsMono-Regular.ttf);
+  font-display: swap;
 }
 
 *,
@@ -25,6 +20,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  -webkit-tag-highlight-color: transparent;
 }
 
 :root {
