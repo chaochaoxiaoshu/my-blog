@@ -5,10 +5,9 @@ $header-height: 5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100vw;
   max-width: 80rem;
   height: $header-height;
-  padding: 1.25rem;
+  padding: 0 var(--page-padding-x);
   margin: 0 auto;
   color: var(--text-primary);
 }

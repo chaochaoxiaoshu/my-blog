@@ -47,6 +47,7 @@ const PostItem: React.FC<PostItemProps> = (props) => {
       <Link to={`/blog/${slug}`}>
         <div className={postItem}>
           {/* gatsby-plugin-image 默认的css样式声明于用户声明之后，无法覆盖，所以包裹一个div */}
+          {/* 左侧的封面图，width > 768px 时显示 */}
           <div className={postImageLeft}>
             <GatsbyImage image={image} alt={imageAlt} />
           </div>
@@ -54,6 +55,7 @@ const PostItem: React.FC<PostItemProps> = (props) => {
             <small className={postDate}>{date}</small>
             <h2 className={postTitle}>{title}</h2>
             <div className={postImage}>
+              {/* content中的封面图，width < 768px 时显示 */}
               <GatsbyImage image={image} alt={imageAlt} />
             </div>
             <p className={postExcerpt}>{excerpt}</p>
@@ -134,7 +136,7 @@ const BlogPage: React.FC<BlogPageProps> = (props) => {
           </div>
         </div>
         <aside className={aside}>
-          <div className={asideTitle}>分类</div>
+          <div className={asideTitle}>标签</div>
           <div className={asideLinkGroup}>
             <Link
               to='/blog'

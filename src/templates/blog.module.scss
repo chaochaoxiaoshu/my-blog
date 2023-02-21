@@ -12,7 +12,7 @@
 
 .wrapper {
   flex: 1;
-  padding: 0 1.25rem;
+  padding: 0 var(--page-padding-x);
 
   & > * {
     margin-bottom: 2rem;
@@ -34,7 +34,7 @@
 .tags-group {
   display: flex;
   align-items: center;
-  padding: 0 1.25rem;
+  padding: 0 var(--page-padding-x);
   margin: 0.5rem 0 1rem;
   overflow-x: auto;
   scroll-behavior: smooth;
@@ -168,46 +168,34 @@
 .aside {
   display: none;
   width: 20rem;
-  padding: 0 1.25rem;
+  padding: 0 3rem 0 1.25rem;
   margin-left: 2rem;
 
   @media screen and (min-width: 1024px) {
     display: block;
-    flex: 28;
   }
 }
 
 .aside-title {
+  padding-bottom: 1.25rem;
   margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--line);
   font-size: 0.875rem;
   line-height: 1.0625rem;
   color: var(--text-primary);
 }
 
-.aside-link-group {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
 .aside-link {
-  padding: 0.5em 1em;
-  margin: 0 0.8em 0.8em 0;
-  border: 1px solid var(--line);
-  color: var(--text-secondary);
-  font-size: 0.875rem;
-  line-height: 1.0625rem;
-  border-radius: 999em;
+  display: block;
+  color: var(--teal-500);
+  // font-size: 0.875rem;
+  line-height: 1.2rem;
+  margin-bottom: 1.25rem;
   user-select: none;
   -webkit-user-drag: none;
-
-  &:hover {
-    background-color: var(--bg-secondary);
-  }
 }
 
 .aside-link.active {
-  border: 0;
-  color: var(--text-primary-reverse);
-  background-color: var(--text-primary);
+  color: var(--text-primary);
+  font-weight: bold;
 }
