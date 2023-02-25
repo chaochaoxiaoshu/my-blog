@@ -26,7 +26,6 @@ import {
   aside,
   asideTitle,
   asideLink,
-  asideLinkGroup,
   active,
 } from './blog.module.scss'
 
@@ -137,7 +136,7 @@ const BlogPage: React.FC<BlogPageProps> = (props) => {
         </div>
         <aside className={aside}>
           <div className={asideTitle}>标签</div>
-          <div className={asideLinkGroup}>
+          <div>
             <Link
               to='/blog'
               className={`${asideLink} ${path === '/blog/' && active}`}

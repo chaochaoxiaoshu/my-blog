@@ -50,8 +50,8 @@ const BlogPost: React.FC<BlogPostPorps> = ({ data, children }) => {
       <div className={page}>
         <article className={article}>
           <div className={insideArticle}>
-            <small className={date}>{data.mdx.frontmatter.date}</small>
             <h1 className={title}>{data.mdx.frontmatter.title}</h1>
+            <small className={date}>{data.mdx.frontmatter.date}</small>
             <GatsbyImage
               className={heroImage}
               image={image}
@@ -64,12 +64,13 @@ const BlogPost: React.FC<BlogPostPorps> = ({ data, children }) => {
           <aside className={aside}>
             <div className={asideTitle}>本篇目录</div>
             {tableOfContent?.map((item) => (
-              <>
+              <div key={item.url}>
                 <a className={asideLink} href={item.url}>
                   {item.title}
                 </a>
                 {item.items?.map((subItem) => (
                   <a
+                    key={subItem.url}
                     style={{ paddingLeft: '0.8rem' }}
                     className={asideLink}
                     href={subItem.url}
@@ -77,7 +78,7 @@ const BlogPost: React.FC<BlogPostPorps> = ({ data, children }) => {
                     {subItem.title}
                   </a>
                 ))}
-              </>
+              </div>
             ))}
           </aside>
         )}

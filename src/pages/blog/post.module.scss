@@ -19,15 +19,15 @@
   font-size: 2.5rem;
   font-weight: 500;
   line-height: 3.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 
   @media screen and (min-width: 768px) {
-    font-size: 3.2rem;
+    margin-top: 5rem;
   }
 
   @media screen and (min-width: 1024px) {
-    margin-bottom: 2.4rem;
     font-size: 3.6rem;
+    margin-top: 6rem;
   }
 }
 
@@ -36,15 +36,15 @@
   font-size: 0.875rem;
   line-height: 1.0625rem;
   letter-spacing: 0.1rem;
-  margin: 4rem 0 0.5rem;
+  margin-bottom: 1.5rem;
   color: var(--text-tertiary);
 
   @media screen and (min-width: 768px) {
-    margin: 5rem 0 1rem;
+    // margin: 5rem 0 1rem;
   }
 
   @media screen and (min-width: 1024px) {
-    margin: 6rem 0 1.2rem;
+    // margin: 6rem 0 1.2rem;
   }
 }
 
@@ -57,6 +57,7 @@
   width: 18rem;
   height: 100vh;
   padding: 2rem 3rem 2rem 1.2rem;
+  margin-top: 4rem;
   overflow: scroll;
 
   @media screen and (min-width: 1024px) {
