@@ -1,7 +1,7 @@
 // React
 import * as React from 'react'
 // Components
-import { Link, graphql } from 'gatsby'
+import { Link, graphql, navigate } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import Layout from '../components/layout'
 import Hero from '../components/section-heading'
@@ -104,20 +104,20 @@ const BlogPage: React.FC<BlogPageProps> = (props) => {
       <div className={page}>
         <div className={content}>
           <div className={tagsGroup}>
-            <Link
-              to='/blog'
+            <div
+              onClick={() => navigate('/blog')}
               className={`${tagItem} ${path === '/blog/' && active}`}
             >
               全部
-            </Link>
+            </div>
             {pageContext.allTags.map((item) => (
-              <Link
+              <div
+                onClick={() => navigate(`/blog/tags/${_.kebabCase(item.tag)}`)}
                 key={item.tag}
-                to={`/blog/tags/${_.kebabCase(item.tag)}`}
                 className={`${tagItem} ${tagIsActive(item.tag) && active}`}
               >
                 {item.tag} ({item.totalCount})
-              </Link>
+              </div>
             ))}
           </div>
           <div className={wrapper}>

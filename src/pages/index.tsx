@@ -7,7 +7,7 @@ import { ThemeContext } from '../components/layout'
 import { heroSection, heroTitle, test, tast } from './index.module.scss'
 import Hero from '../images/hero_1x.svg'
 import HeroDark from '../images/hero_1x_dark.svg'
-import { Link } from 'gatsby'
+import { Link, navigate } from 'gatsby'
 
 const IndexPage: React.FC = () => {
   const themeContext = useContext(ThemeContext)
@@ -20,9 +20,7 @@ const IndexPage: React.FC = () => {
         <HeroDark className='hero-dark' />
         <div>
           <h1 className={heroTitle}>爱屏幕上发生的一切</h1>
-          <Link to='/blog'>
-            <Button>博客</Button>
-          </Link>
+          <Button onClick={() => navigate('/blog')}>博客</Button>
         </div>
       </div>
     </Layout>
