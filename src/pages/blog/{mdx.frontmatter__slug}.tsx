@@ -16,6 +16,9 @@ import {
   asideLink,
 } from './post.module.scss'
 
+import { ThemeContext } from '../../components/layout'
+import { useContext, useEffect } from 'react'
+
 interface TableOfContentsItem {
   url: string
   title: string

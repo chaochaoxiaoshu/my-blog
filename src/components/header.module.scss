@@ -142,7 +142,7 @@ $header-height: 5rem;
 }
 
 .navigator-dropdown {
-  padding: 0 1.25rem;
+  padding: 0 var(--page-padding-x);
   & a {
     display: block;
     padding: 0.5rem 0;
@@ -154,6 +154,6 @@ $header-height: 5rem;
 }
 
 .actions-dropdown {
-  padding: 0 1.25rem;
+  padding: 0 var(--page-padding-x);
   margin: 3rem 0;
 }

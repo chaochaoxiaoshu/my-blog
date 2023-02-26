@@ -84,7 +84,7 @@ const config: GatsbyConfig = {
     {
       resolve: '@skagami/gatsby-plugin-dark-mode',
       options: {
-        rootElement: 'document.documentElement',
+        rootElement: 'document.body',
       },
     },
     {

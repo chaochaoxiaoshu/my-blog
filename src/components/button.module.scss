@@ -1,0 +1,18 @@
+.custom-button {
+  width: 100%;
+  padding: 0.6rem 2rem;
+  border: none;
+  font-size: 1rem;
+  color: var(--text-primary-reverse);
+  background: var(--text-primary);
+  border-radius: 9999px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--);
+  }
+
+  @media screen and (min-width: 768px) {
+    width: auto;
+  }
+}

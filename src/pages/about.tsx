@@ -6,7 +6,7 @@ import Seo from '../components/seo'
 const AboutPage: React.FC = () => {
   return (
     <Layout>
-      <div className='markdown' style={{ padding: '0 1.25rem' }}>
+      {/* <div className='markdown' style={{ padding: '0 1.25rem' }}>
         <h2>为什么会有这个网站？</h2>
         <p>
           功利地讲，一直以来所做的努力全都是为了证明自己合格。所以，作为一个前端er，怎能不拥有一个属于自己的网站呢？
@@ -25,7 +25,7 @@ const AboutPage: React.FC = () => {
           <br />
           讲废话和走神才是生命的气口，说不定这正是我们真正与世界联结的时刻。
         </p>
-      </div>
+      </div> */}
     </Layout>
   )
 }

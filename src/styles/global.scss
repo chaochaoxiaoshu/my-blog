@@ -23,7 +23,7 @@
   -webkit-tag-highlight-color: transparent;
 }
 
-:root {
+body {
   /* Color Set */
   --gray-50: #fafafa;
   --gray-100: #f4f4f5;
@@ -36,19 +36,19 @@
   --gray-800: #27272a;
   --gray-900: #18181b;
 
-  --teal-50: #f0fdfa;
-  --teal-100: #ccfbf1;
-  --teal-200: #99f6e4;
-  --teal-300: #5eead4;
-  --teal-400: #2dd4bf;
-  --teal-500: #14b8a6;
-  --teal-600: #0d9488;
-  --teal-700: #0f766e;
-  --teal-800: #115e59;
-  --teal-900: #134e4a;
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-200: #bfdbfe;
+  --blue-300: #93c5fd;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-800: #1e40af;
+  --blue-900: #1e3a8a;
 }
 
-:root {
+body {
   --page-padding-x: 1.25rem;
 
   @media screen and (min-width: 640px) {
@@ -56,7 +56,7 @@
   }
 }
 
-:root {
+body {
   --text-primary: var(--gray-800);
   --text-secondary: var(--gray-500);
   --text-tertiary: var(--gray-400);
@@ -76,7 +76,7 @@
   --code-purple: #8d39ae;
 }
 
-:root.dark {
+body.dark {
   --text-primary: white;
   --text-secondary: var(--gray-400);
   --text-tertiary: var(--gray-500);
@@ -95,11 +95,36 @@
   --code-purple: #bc89bd;
 }
 
-:root {
+body {
   color: var(--text-primary);
   font-family: 'Figtree', sans-serif;
   letter-spacing: 0.05rem;
   background-color: var(--bg-primary);
+
+  // 暂时放到这里，太心烦了
+  & .hero {
+    @media screen and (min-width: 1024px) {
+      transform: scale(1.5);
+      transform-origin: right top;
+    }
+  }
+
+  &.dark .hero {
+    display: none;
+  }
+
+  & .hero-dark {
+    display: none;
+  }
+
+  &.dark .hero-dark {
+    display: block;
+
+    @media screen and (min-width: 1024px) {
+      transform: scale(1.5);
+      transform-origin: right top;
+    }
+  }
 }
 
 /*

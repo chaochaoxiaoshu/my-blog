@@ -1,6 +1,7 @@
 // React
 import * as React from 'react'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { ThemeContext } from './layout'
 // Components
 import { Link } from 'gatsby'
 import MySearchContainer from './search-box'
@@ -39,19 +40,17 @@ const Navigator: React.FC = () => {
   )
 }
 
-interface ThemePickerProps {
-  useTheme: [string, (theme: string) => void]
-}
-
-const ThemePicker: React.FC<ThemePickerProps> = (props) => {
-  const { useTheme } = props
-  const [theme, toggleTheme] = useTheme
+const ThemePicker: React.FC = () => {
+  const themeContext = useContext(ThemeContext)
+  const handleClick = (value: string) => {
+    themeContext?.toggleTheme(value)
+  }
   return (
     <>
-      {theme === 'light' ? (
-        <Sun onClick={() => toggleTheme('dark')} />
+      {themeContext?.theme === 'light' ? (
+        <Sun onClick={() => handleClick('dark')} />
       ) : (
-        <Moon onClick={() => toggleTheme('light')} />
+        <Moon onClick={() => handleClick('light')} />
       )}
     </>
   )
@@ -77,11 +76,7 @@ const BurgerMenu: React.FC<ToggleDropdownProps> = (props) => {
   )
 }
 
-interface DropdownProps extends ToggleDropdownProps {
-  useTheme: [string, (theme: string) => void]
-}
-
-const Dropdown: React.FC<DropdownProps> = (props) => {
+const Dropdown: React.FC<ToggleDropdownProps> = (props) => {
   const { isShow } = props
   return (
     <div className={`${isShow ? active : ''} ${dropdown}`}>
@@ -92,7 +87,7 @@ const Dropdown: React.FC<DropdownProps> = (props) => {
         <Link to='/about'>About</Link>
       </nav>
       <div className={actionsDropdown}>
-        <ThemePicker useTheme={props.useTheme} />
+        <ThemePicker />
       </div>
     </div>
   )
@@ -114,7 +109,6 @@ const SearchModal: React.FC<SearchModalProps> = (props) => {
 
 interface HeaderProps {
   style?: CSSProperties
-  useTheme: [string, (theme: string) => void]
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
@@ -129,7 +123,7 @@ const Header: React.FC<HeaderProps> = (props) => {
         {/* Desktop only */}
         <Navigator />
         <div className={actions}>
-          <ThemePicker useTheme={props.useTheme} />
+          <ThemePicker />
           <SearchIcon onClick={() => setIsShowSearch(true)} />
         </div>
         {/* Mobile only */}
@@ -137,11 +131,7 @@ const Header: React.FC<HeaderProps> = (props) => {
           <SearchIcon onClick={() => setIsShowSearch(true)} />
           <BurgerMenu isShow={isShowDropdown} setIsShow={setIsShowDropdown} />
         </div>
-        <Dropdown
-          isShow={isShowDropdown}
-          setIsShow={setIsShowDropdown}
-          useTheme={props.useTheme}
-        />
+        <Dropdown isShow={isShowDropdown} setIsShow={setIsShowDropdown} />
       </header>
       <SearchModal isShow={isShowSearch} setIsShow={setIsShowSearch} />
     </>
