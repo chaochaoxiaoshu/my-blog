@@ -7,7 +7,7 @@ import { ThemeContext } from '../components/layout'
 import { heroSection, heroTitle, test, tast } from './index.module.scss'
 import Hero from '../images/hero_1x.svg'
 import HeroDark from '../images/hero_1x_dark.svg'
-import { Link, navigate } from 'gatsby'
+import { navigate } from 'gatsby'
 
 const IndexPage: React.FC = () => {
   const themeContext = useContext(ThemeContext)
