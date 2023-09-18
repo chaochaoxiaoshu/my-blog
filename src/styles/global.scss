@@ -62,6 +62,7 @@ body {
   --text-tertiary: var(--gray-400);
   --bg-primary: white;
   --bg-secondary: var(--gray-100);
+  --bg-transparency: rgba(255, 255, 255, 0.9);
   --line: var(--gray-100);
   --text-bg-selected: rgba(20, 184, 166, 0.2);
   --text-primary-reverse: white;
@@ -82,6 +83,7 @@ body.dark {
   --text-tertiary: var(--gray-500);
   --bg-primary: var(--gray-800);
   --bg-secondary: var(--gray-900);
+  --bg-transparency: rgba(39, 39, 42, 0.9);
   --line: var(--gray-700);
   --text-primary-reverse: var(--gray-800);
 
@@ -143,7 +145,7 @@ hr {
 }
 
 /*
- Remove the default font size and weight for headings.
+ Reset links to optimize for opt-in styling instead of opt-out.
  */
 
 h1,
@@ -156,10 +158,6 @@ h6 {
   font-weight: inherit;
 }
 
-/*
- Reset links to optimize for opt-in styling instead of opt-out.
- */
-
 a {
   color: inherit;
   text-decoration: inherit;
@@ -167,4 +165,93 @@ a {
 
 ::selection {
   background-color: var(--text-bg-selected);
+}
+
+.basis-1-12 {
+  flex-basis: 8.333333%;
+}
+
+.basis-2-12 {
+  flex-basis: 16.666667%;
+}
+
+.basis-3-12 {
+  flex-basis: 25%;
+}
+
+.basis-4-12 {
+  flex-basis: 33.333333%;
+}
+
+.basis-5-12 {
+  flex-basis: 41.666667%;
+}
+
+.basis-6-12 {
+  flex-basis: 50%;
+}
+
+.basis-7-12 {
+  flex-basis: 58.333333%;
+}
+
+.basis-8-12 {
+  flex-basis: 66.666667%;
+}
+
+.basis-9-12 {
+  flex-basis: 75%;
+}
+
+.basis-10-12 {
+  flex-basis: 83.333333%;
+}
+
+.basis-11-12 {
+  flex-basis: 91.666667%;
+}
+
+.basis-12-12 {
+  flex-basis: 100%;
+}
+
+blockquote,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+figure,
+p,
+pre {
+  margin: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+img,
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
+  display: block;
+  vertical-align: middle;
+}
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
 }

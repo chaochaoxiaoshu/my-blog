@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { customButton } from './button.module.scss'
+import HoverAnimation from './hover-animation'
 
 interface ButtonProps {
   children: React.ReactNode
@@ -10,7 +11,7 @@ const Button: React.FC<ButtonProps> = (props) => {
   const { children, onClick } = props
   return (
     <button onClick={onClick} className={customButton}>
-      {children}
+      <HoverAnimation>{children}</HoverAnimation>
     </button>
   )
 }

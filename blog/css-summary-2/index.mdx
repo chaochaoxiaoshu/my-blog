@@ -1,0 +1,128 @@
+---
+title: 'CSS复习笔记 2️⃣ ：精通布局'
+date: '2023-02-27'
+slug: 'css-summary-2'
+tags: ['CSS']
+hero_image: './css-layout.png'
+hero_image_alt: 'CSS Layout'
+---
+
+## 浮动
+
+浮动是网页布局最古老的方式，并且在过去很多年都是唯一的方式。浮动有很多让人捉摸不透的问题，要想理解浮动，必须从它的设计初衷入手。
+
+### 4.1 浮动的设计初衷
+
+最初创造浮动并不是为了用于网页布局，但它在布局方面表现得很出色。
+
+浮动能将一个元素（通常是一张图片）拉到其容器的一侧，这样文档流就能包围它。这种布局在报纸和杂志中很常见，因此 CSS 增加了浮动来实现这种效果。
+
+在 CSS 早期，开发人员发现使用简单的浮动就能移动页面的各个部分，从而实现各式各样的布局。**浮动本身不是为了实现页面布局而设计的，但是在近 20 年的时间里，我们把它当成了布局工具。**之所以这样做是因为它是那个年代唯一的选择。后来`display: inline-block`和`display: table`的问世才让我们有了别的方案，但这二者可替代的场景也十分有限。在 Flex 和 Grid 出现之前，浮动一直承担着页面布局的重任。
+
+### 4.2 容器折叠与清除浮动
+
+浮动元素不同于普通文档流的元素，它们的高度不会加到父元素上。所以当为父元素设置背景时，可以看到背景并不会包裹浮动元素。这种行为不是我们实现布局时想要的。
+
+#### 4.2.1 容器折叠
+
+一个解决办法是使用跟浮动配套的 clear 属性。讲一个元素放在主容器的末尾，并为它添加 clear 属性，这会让容器扩展到浮动元素下面。但这种方式不雅。要在 HTML 中添加不必要的标记，才能实现本应该由 CSS 实现的效果。
+
+```html
+<div class="container">
+  <div class="float">float element</div>
+  <div class="float">float element</div>
+  <div class="float">float element</div>
+  <div class="float">float element</div>
+  <div style="clear: both"></div>
+</div>
+```
+
+#### 4.2.2 清除浮动
+
+不使用额外的 div 标签，我们可以使用伪元素来实现。使用`::after`伪元素，就可以在 DOM 中容器的末尾添加一个元素，而无需在 HTML 中添加标记。
+
+```html
+<div class="container clearfix">
+  <div class="float">float element</div>
+  <div class="float">float element</div>
+  <div class="float">float element</div>
+  <div class="float">float element</div>
+</div>
+```
+
+```css
+.clearfix::after {
+  display: block;
+  content: ' ';
+  clear: both;
+}
+```
+
+这个清除浮动还有一个一致性问题没有解决：浮动元素的外边距不会折叠到清除浮动容器的外部，非浮动元素的外边距则会正常折叠。
+
+所以一些开发者更喜欢使用一个改进版本：
+
+```css
+.clearfix::before,
+.clearfix::after {
+  display: table;
+  content: ' ';
+}
+
+.clearfix::after {
+  clear: both;
+}
+```
+
+这个版本使用`display: table`而不是`display: block`，给`::before`和`::after`都加上这一属性，所有子元素的外边距都会包含在容器的顶部和底部之间。
+
+### 4.3 BFC
+
+BFC 是指块级格式上下文（block formatting context）。BFC 是网页的一块区域，元素基于这块区域布局。虽然 BFC 本身是围绕文档流的一部分，但它将内部的内容与外部的上下文分隔开。这种隔离为创建 BFC 的元素做了三件事情：
+
+1. 包含了内部所有的上下边距。它们不会和 BFC 外面的元素产生边距折叠。
+2. 包含了内部所有的浮动元素。
+3. 不会跟 BFC 外面的浮动元素重叠。
+
+以下属性会创建 BFC：
+
+- float: left 或 right，不为 none 即可。
+- overflow: hidden、auto 或 scroll，不为 visible 即可。
+- display: inline-block、table-cell、table-caption、flex、inline-flex、grid 或 inline-grid。拥有这些属性的元素称为块级容器（block container）。
+- position: absolute 或 position: fixed。
+
+> 网页的根元素也创建了一个顶级的 BFC。
+
+overflow: auto 是创建 BFC 最简单的方式。
+
+## Flexbox
+
+与浮动布局相比，Flexbox 提供了更好的可预测性，还能提供更精细的控制。
+
+### 5.1 Flexbox 的原则
+
+给元素添加`display: flex`该元素变成了一个弹性容器（flex container），它的直接子元素变成了弹性子元素（flex item）。弹性子元素默认是在同一行按照从左到右的顺序并排排列。弹性容器像块元素一样填满可用宽度。弹性子元素高度相等，该高度由它们的内容决定。
+
+子元素按照主轴线排列，主轴的方向为主起点（左）到主终点（右）。垂直于主轴的是副轴。
+
+### 5.2 弹性子元素的大小
+
+`flex`属性控制弹性子元素在主轴方向上的大小。`flex`是`flex-grow`、`flex-shrink`、`flex-basis`三个属性的缩写。
+
+#### 5.2.1 flex-basis
+
+`flex-basis`定义了元素大小的基准值，即一个初始的”主尺寸“。flex-basis 属性可以设置为任意的 width 值，包括 px、em、百分比。它的初始值是`auto`，此时浏览器会检查元素是否使用了`width`属性值。如果有，则使用 width 的值作为 flex-basis 的值；如果没有，则使用元素内容自身的大小。如果 flex-basis 的值不是 auto，width 属性会被忽略。
+
+#### 5.2.2 flex-grow
+
+每个弹性子元素的 flex-basis 值计算出来后，它们（加上子元素之间的外边距）加起来会占据一定的宽度。加起来的宽度不一定正好填满弹性容器的宽度，可能会有留白。
+
+多出来的留白（或剩余宽度）会按照 flex-grow（增长因子）的值分配给每个弹性子元素，flex-grow 的值为非负整数。如果一个弹性子元素的 flex-grow 值为 0，那么它的宽度不会超过 flex-basis 的值；如果某个弹性子元素的增长因子非 0，那么这些元素会增长到所有的剩余空间被分配完，也就意味着弹性子元素会填满容器的宽度。
+
+flex-grow 的值越大，元素的“权重”越高，也就会占据更大的剩余宽度。一个 flex-grow:2 的子元素增长的宽度为 flex-grow: 1 的子元素的两倍。
+
+#### 5.2.3 flex-shrink
+
+flex-shrink 属性与 flex-grow 遵循相似的原则。计算出弹性子元素的初始主尺寸后，它们的累加值可能会超出弹性容器的可用宽度。如果不用 flex-shrink，就会导致溢出。
+
+每个子元素的 flex-shrink 值代表了它是否应该收缩以防止溢出。如果某个子元素为 flex-shrink: 0，则不会收缩；如果值大于 0，则会收缩至不再溢出。按照 flex-shrink 值的比例，值越大的元素收缩得越多。

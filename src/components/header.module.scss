@@ -1,7 +1,17 @@
 $header-height: 5rem;
 
+.headerBackground {
+  z-index: 50;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  color: var(--text-primary);
+  background-color: var(--bg-transparency);
+  backdrop-filter: blur(16px) saturate(2);
+}
+
 .header {
-  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,7 +19,10 @@ $header-height: 5rem;
   height: $header-height;
   padding: 0 var(--page-padding-x);
   margin: 0 auto;
-  color: var(--text-primary);
+}
+
+.header-on-scroll {
+  border-bottom: 1px solid var(--line);
 }
 
 .header-logo {
@@ -74,8 +87,9 @@ $header-height: 5rem;
   flex-direction: row;
   font-weight: 500;
 
-  * {
+  & > * {
     margin-right: 2.5rem;
+
     &:last-child {
       margin: 0;
     }
@@ -156,4 +170,8 @@ $header-height: 5rem;
 .actions-dropdown {
   padding: 0 var(--page-padding-x);
   margin: 3rem 0;
+}
+
+.headerPlaceholder {
+  height: $header-height;
 }

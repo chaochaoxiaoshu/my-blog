@@ -1,13 +1,15 @@
 // React
 import * as React from 'react'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { ThemeContext } from './layout'
 // Components
 import { Link } from 'gatsby'
 import MySearchContainer from './search-box'
 // Styles
 import {
+  headerBackground,
   header,
+  headerOnScroll,
   headerLogo,
   burgerMenu,
   active,
@@ -19,6 +21,7 @@ import {
   dropdown,
   navigatorDropdown,
   actionsDropdown,
+  headerPlaceholder,
 } from './header.module.scss'
 // Icons
 import Logo from '../images/svg/logo.svg'
@@ -28,14 +31,24 @@ import Moon from '../images/svg/moon.svg'
 // Types
 import type { CSSProperties, Dispatch, SetStateAction } from 'react'
 import Modal from './modal'
+import useScrollTop from '../hooks/useScrollTop'
+import HoverAnimation from './hover-animation'
 
 const Navigator: React.FC = () => {
   return (
     <nav className={navigator}>
-      <Link to='/'>Home</Link>
-      <Link to='/blog'>Blog</Link>
-      <Link to='/products'>Products</Link>
-      <Link to='/about'>About</Link>
+      <Link to='/'>
+        <HoverAnimation>Home</HoverAnimation>
+      </Link>
+      <Link to='/blog'>
+        <HoverAnimation>Blog</HoverAnimation>
+      </Link>
+      <Link to='/products'>
+        <HoverAnimation>Products</HoverAnimation>
+      </Link>
+      <Link to='/about'>
+        <HoverAnimation>About</HoverAnimation>
+      </Link>
     </nav>
   )
 }
@@ -114,25 +127,39 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = (props) => {
   const [isShowDropdown, setIsShowDropdown] = useState(false)
   const [isShowSearch, setIsShowSearch] = useState(false)
+  const scrollTop = useScrollTop()
+  const [isOnScroll, setIsOnScroll] = useState(false)
+  useEffect(() => {
+    if (scrollTop > 80) {
+      if (isOnScroll) return
+      setIsOnScroll(true)
+    } else {
+      if (!isOnScroll) return
+      setIsOnScroll(false)
+    }
+  }, [scrollTop])
   return (
     <>
-      <header style={props.style} className={header}>
-        <Link className={headerLogo} to='/'>
-          <Logo />
-        </Link>
-        {/* Desktop only */}
-        <Navigator />
-        <div className={actions}>
-          <ThemePicker />
-          <SearchIcon onClick={() => setIsShowSearch(true)} />
-        </div>
-        {/* Mobile only */}
-        <div className={actionsMobile}>
-          <SearchIcon onClick={() => setIsShowSearch(true)} />
-          <BurgerMenu isShow={isShowDropdown} setIsShow={setIsShowDropdown} />
-        </div>
-        <Dropdown isShow={isShowDropdown} setIsShow={setIsShowDropdown} />
-      </header>
+      <div style={props.style} className={headerBackground}>
+        <header className={`${header} ${isOnScroll ? headerOnScroll : ''}`}>
+          <Link className={headerLogo} to='/'>
+            <Logo />
+          </Link>
+          {/* Desktop only */}
+          <Navigator />
+          <div className={actions}>
+            <ThemePicker />
+            <SearchIcon onClick={() => setIsShowSearch(true)} />
+          </div>
+          {/* Mobile only */}
+          <div className={actionsMobile}>
+            <SearchIcon onClick={() => setIsShowSearch(true)} />
+            <BurgerMenu isShow={isShowDropdown} setIsShow={setIsShowDropdown} />
+          </div>
+          <Dropdown isShow={isShowDropdown} setIsShow={setIsShowDropdown} />
+        </header>
+      </div>
+      <div className={headerPlaceholder}></div>
       <SearchModal isShow={isShowSearch} setIsShow={setIsShowSearch} />
     </>
   )

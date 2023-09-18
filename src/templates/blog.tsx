@@ -102,7 +102,7 @@ const BlogPage: React.FC<BlogPageProps> = (props) => {
     <Layout>
       <Hero title='博客' />
       <div className={page}>
-        <div className={content}>
+        <div className={`${content} basis-9-12`}>
           <div className={tagsGroup}>
             <div
               onClick={() => navigate('/blog')}
@@ -134,7 +134,7 @@ const BlogPage: React.FC<BlogPageProps> = (props) => {
             ))}
           </div>
         </div>
-        <aside className={aside}>
+        <aside className={`${aside} basis-3-12`}>
           <div className={asideTitle}>标签</div>
           <div>
             <Link

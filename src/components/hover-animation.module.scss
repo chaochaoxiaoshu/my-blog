@@ -1,0 +1,18 @@
+.hover-animation-container {
+  position: relative;
+  overflow: hidden;
+  &:hover {
+    & > * {
+      transform: translateY(-100%);
+    }
+  }
+}
+
+.main {
+  transition: transform 0.25s ease-out;
+}
+
+.alt {
+  position: absolute;
+  transition: transform 0.25s ease-out;
+}

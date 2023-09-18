@@ -11,24 +11,7 @@
 }
 
 .wrapper {
-  flex: 1;
   padding: 0 var(--page-padding-x);
-
-  & > * {
-    margin-bottom: 2rem;
-  }
-
-  @media screen and (min-width: 768px) {
-    & > * {
-      margin-bottom: 1.25rem;
-    }
-  }
-
-  @media screen and (min-width: 1024px) {
-    & > * {
-      margin-bottom: 1.6rem;
-    }
-  }
 }
 
 .tags-group {
@@ -36,7 +19,7 @@
   align-items: center;
   max-width: 100vw;
   padding: 0 var(--page-padding-x);
-  margin: 0.5rem 0 2rem;
+  margin: 0.5rem 0;
   border-bottom: 1px solid var(--line);
   overflow-x: auto;
   scroll-behavior: smooth;
@@ -65,10 +48,12 @@
 }
 
 .post-item {
+  padding: 1.25rem 0;
   @include divider();
 
   @media screen and (min-width: 768px) {
     display: flex;
+    padding: 1.5rem 0;
   }
 }
 
@@ -85,6 +70,12 @@
   & .post-image {
     @media screen and (min-width: 768px) {
       display: block;
+    }
+  }
+
+  & .post-title {
+    @media screen and (min-width: 768px) {
+      margin-bottom: 0.8rem;
     }
   }
 
@@ -130,17 +121,12 @@
 }
 
 .post-excerpt {
-  margin-bottom: 1.25rem;
   font-size: 1rem;
   line-height: 1.625rem;
   color: var(--text-secondary);
 
   @media screen and (min-width: 768px) {
     line-height: 1.75rem;
-  }
-
-  @media screen and (min-width: 1024px) {
-    margin-bottom: 1.6rem;
   }
 }
 
@@ -156,22 +142,15 @@
   width: 12.5rem;
   min-width: 12.5rem;
   margin-right: 1.25rem;
-  margin-bottom: 1.25rem;
 
   @media screen and (min-width: 768px) {
     display: block;
-  }
-
-  @media screen and (min-width: 1024px) {
-    margin-bottom: 1.6rem;
   }
 }
 
 .aside {
   display: none;
-  width: 20rem;
   padding: 0 3rem 0 1.25rem;
-  margin-left: 2rem;
 
   @media screen and (min-width: 1024px) {
     display: block;
@@ -180,7 +159,7 @@
 
 .aside-title {
   padding-bottom: 1.25rem;
-  margin-bottom: 1.25rem;
+  margin: 1.25rem 0;
   border-bottom: 1px solid var(--line);
   font-size: 0.875rem;
   line-height: 1.0625rem;

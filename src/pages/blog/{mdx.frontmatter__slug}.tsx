@@ -16,9 +16,6 @@ import {
   asideLink,
 } from './post.module.scss'
 
-import { ThemeContext } from '../../components/layout'
-import { useContext, useEffect } from 'react'
-
 interface TableOfContentsItem {
   url: string
   title: string
@@ -51,7 +48,7 @@ const BlogPost: React.FC<BlogPostPorps> = ({ data, children }) => {
   return (
     <Layout>
       <div className={page}>
-        <article className={article}>
+        <article className={`${article} basis-9-12`}>
           <div className={insideArticle}>
             <h1 className={title}>{data.mdx.frontmatter.title}</h1>
             <small className={date}>{data.mdx.frontmatter.date}</small>
@@ -64,7 +61,7 @@ const BlogPost: React.FC<BlogPostPorps> = ({ data, children }) => {
           </div>
         </article>
         {tableOfContent && (
-          <aside className={aside}>
+          <aside className={`${aside} basis-3-12`}>
             <div className={asideTitle}>本篇目录</div>
             {tableOfContent?.map((item) => (
               <div key={item.url}>

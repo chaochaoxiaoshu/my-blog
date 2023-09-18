@@ -4,8 +4,6 @@
 }
 
 .article {
-  flex-grow: 1;
-  width: 100%;
   padding: 0 var(--page-padding-x);
 }
 
@@ -54,15 +52,14 @@
 
 .aside {
   display: none;
-  width: 18rem;
-  height: 100vh;
+  height: 80vh;
   padding: 2rem 3rem 2rem 1.2rem;
   margin-top: 4rem;
   overflow: scroll;
 
   @media screen and (min-width: 1024px) {
     position: sticky;
-    top: 0;
+    top: 5rem;
     display: block;
   }
 }
